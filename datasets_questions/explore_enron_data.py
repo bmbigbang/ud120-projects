@@ -16,7 +16,29 @@
 """
 
 import pickle
-
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+# Lay Kenneth payment
+for i in enron_data:
+    if "lay" in i.lower() and "kenneth" in i.lower():
+        for j in enron_data[i]:
+            print j, enron_data[i][j]
+    else:
+        continue
+
+# counter for emails/salary
+# counter = 0
+# for i in enron_data:
+#     if enron_data[i]['email_address'] and enron_data[i]['email_address'] != "NaN":
+#         print enron_data[i]['email_address']
+#         counter += 1
+# print counter
+
+# counter for PoI with NaN payment totals
+# counter = 0
+# for i in enron_data:
+#     if enron_data[i]['poi'] and enron_data[i]['total_payments'] == "NaN":
+#         counter += 1
+#
+# print counter + 10, (counter + 10) / (float(len(enron_data)) + 10)
 
