@@ -42,3 +42,7 @@ for i in enron_data:
 #
 # print counter + 10, (counter + 10) / (float(len(enron_data)) + 10)
 
+#  Recogining outliers
+# for i in enron_data:
+#     if enron_data[i]["bonus"] != "NaN" and enron_data[i]["bonus"] > 5e6:
+#         print i, enron_data[i]["bonus"], enron_data[i]["salary"]
