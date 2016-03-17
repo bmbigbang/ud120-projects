@@ -59,10 +59,16 @@ poi, finance_features = targetFeatureSplit( data )
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
 
-print min([i for i, j, k in finance_features if i > 0])
+# printing min/max values
+# print min([i for i, j, k in finance_features if i > 0])
+
 for f1, f2, f3 in finance_features:
     plt.scatter(f1, f2)
 plt.show()
+
+rescaled1 = map(lambda x:(float(x)-min(x))/(max(x)-min(x)), finance_features[0])
+rescaled2 = map(lambda x:(float(x)-min(x))/(max(x)-min(x)), finance_features[1])
+
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
