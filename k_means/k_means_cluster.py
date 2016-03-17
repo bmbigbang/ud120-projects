@@ -48,8 +48,8 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
-poi  = "poi"
-features_list = [poi, feature_1, feature_2]
+poi = "poi"
+features_list = [poi, feature_1, feature_2, "total_payments"]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
@@ -58,15 +58,18 @@ poi, finance_features = targetFeatureSplit( data )
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-for f1, f2 in finance_features:
-    plt.scatter( f1, f2 )
+
+print min([i for i, j, k in finance_features if i > 0])
+for f1, f2, f3 in finance_features:
+    plt.scatter(f1, f2)
 plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
-
-
-
+from sklearn.cluster import KMeans
+model = KMeans(n_clusters=2)
+model.fit(finance_features, poi)
+pred = model.predict(finance_features)
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file

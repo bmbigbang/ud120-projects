@@ -19,12 +19,12 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 # Lay Kenneth payment
-for i in enron_data:
-    if "lay" in i.lower() and "kenneth" in i.lower():
-        for j in enron_data[i]:
-            print j, enron_data[i][j]
-    else:
-        continue
+# for i in enron_data:
+#     if "lay" in i.lower() and "kenneth" in i.lower():
+#         for j in enron_data[i]:
+#             print j, enron_data[i][j]
+#     else:
+#         continue
 
 # counter for emails/salary
 # counter = 0
