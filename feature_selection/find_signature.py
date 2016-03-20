@@ -38,6 +38,18 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+from sklearn import tree
+clf = tree.DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
+# print accuracy
+print sum([1 if i == j else 0 for i, j in zip(pred, labels_test)])/float(len(labels_test))
+from sklearn.metrics import accuracy_score
+print accuracy_score(labels_test, pred)
 
+# feature_importance
+print [(i, j) for i, j in enumerate(clf.feature_importances_) if j > 0.2]
+# print important word found above
+print vectorizer.get_feature_names()[18682]
 
