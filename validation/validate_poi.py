@@ -29,4 +29,22 @@ labels, features = targetFeatureSplit(data)
 
 ### it's all yours from here forward!  
 
+from sklearn import tree
+model = tree.DecisionTreeClassifier()
 
+model.fit(features, labels)
+predictions = model.predict(features)
+
+accuracy = sum([1 if i == j else 0 for i, j in zip(predictions, labels)])/float(len(predictions))
+print accuracy
+
+from sklearn.cross_validation import train_test_split
+features_train, features_test, labels_train, labels_test = train_test_split(features, labels, test_size=0.30, random_state=42)
+
+model = tree.DecisionTreeClassifier()
+
+model.fit(features_train, labels_train)
+predictions = model.predict(features_test)
+
+accuracy = sum([1 if i == j else 0 for i, j in zip(predictions, labels_test)])/float(len(predictions))
+print accuracy
